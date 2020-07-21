@@ -38,9 +38,15 @@ public class HomeController {
 
     @RequestMapping(value="/logout")
     public String logout(HttpSession session) {
-        kakaoAPI.kakaoLogout((String)session.getAttribute("access_Token"));
-        session.removeAttribute("access_Token");
-        session.removeAttribute("userId");
+        String access_Token = (String)session.getAttribute("access_Token");
+
+        if(access_Token != null && !"".equals(access_Token)){
+            kakaoAPI.kakaoLogout(access_Token);
+            session.removeAttribute("access_Token");
+            session.removeAttribute("userId");
+        }else{
+            System.out.println("access_Token is null");
+        }
         return "index";
     }
 
