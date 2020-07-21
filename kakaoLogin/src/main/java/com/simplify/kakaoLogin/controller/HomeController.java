@@ -46,8 +46,10 @@ public class HomeController {
             session.removeAttribute("userId");
         }else{
             System.out.println("access_Token is null");
+            //return "redirect:/";
         }
-        return "index";
+        //return "index";
+        return "redirect:/";
     }
 
 }
