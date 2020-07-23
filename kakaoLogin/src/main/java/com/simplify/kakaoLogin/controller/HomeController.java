@@ -23,7 +23,11 @@ public class HomeController {
 
     @RequestMapping(value="/login")
     public String login(@RequestParam("code") String code, HttpSession session) {
+        System.out.println("code : " + code);
+
         String access_Token = kakaoAPI.getAccessToken(code);
+        System.out.println("access_Token : " + access_Token);
+
         HashMap<String, Object> userInfo = kakaoAPI.getUserInfo(access_Token);
         System.out.println("login Controller : " + userInfo);
 
