@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitConfiguration2 {
+public class RabbitConfigurationForProducer {
 
     @Bean
     RabbitTemplate rabbitTemplate3(ConnectionFactory connectionFactory,
