@@ -1,5 +1,6 @@
 package com.simplify.amqp.producer;
 
+import com.simplify.amqp.Constants;
 import com.simplify.amqp.custom.CustomMessage;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.CommandLineRunner;
@@ -7,8 +8,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Runner implements CommandLineRunner {
-
-    private static final String topicExchange = "spring-boot-exchange";
 
     private final RabbitTemplate rabbitTemplate;
 
@@ -19,7 +18,7 @@ public class Runner implements CommandLineRunner {
     @Override
     public void run(String... args) {
         System.out.println("Sending message...");
-        rabbitTemplate.convertAndSend(topicExchange, "foo.bar.baz", "Hello Message!");
+        rabbitTemplate.convertAndSend(Constants.TOPIC_EXCHANGE_NAME, "foo.bar.baz", "Hello Message!");
     }
 
 }

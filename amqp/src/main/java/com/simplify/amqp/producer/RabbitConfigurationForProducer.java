@@ -11,15 +11,15 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitConfigurationForProducer {
 
     @Bean
-    RabbitTemplate rabbitTemplate3(ConnectionFactory connectionFactory,
-                                  MessageConverter messageConverter2) {
+    RabbitTemplate rabbitTemplateForProducer(ConnectionFactory connectionFactory,
+                                  MessageConverter messageConverterForProducer) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(messageConverter2);
+        rabbitTemplate.setMessageConverter(messageConverterForProducer);
         return rabbitTemplate;
     }
 
     @Bean
-    MessageConverter messageConverter3() {
+    MessageConverter messageConverterForProducer() {
         return new Jackson2JsonMessageConverter();
     }
 

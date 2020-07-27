@@ -1,5 +1,6 @@
 package com.simplify.amqp.consumer;
 
+import com.simplify.amqp.Constants;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -12,69 +13,33 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitConfiguration {
-
-    private static final String queueName = "spring-boot";
-
-    private static final String topicExchangeName = "spring-boot-exchange";
-
-    private static final String queueName2 = "spring-boot2";
-
-    private static final String topicExchangeName2 = "spring-boot2-exchange";
+public class RabbitConfigurationForCustomMessage {
 
     @Bean
-    Queue queue() {
-        return new Queue(queueName, false);
+    Queue queueForCustomMessage() {
+        return new Queue(Constants.QUEUE_NAME_FOR_CUSTOM_MESSAGE, false);
     }
 
     @Bean
-    TopicExchange exchange() {
-        return new TopicExchange(topicExchangeName);
+    TopicExchange topicExchangeForCustomMessage() {
+        return new TopicExchange(Constants.TOPIC_EXCHANGE_NAME_FOR_CUSTOM_MESSAGE);
     }
 
     @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
-    }
-
-    @Bean
-    RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory,
-                                  MessageConverter messageConverter) {
-        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(messageConverter);
-        return rabbitTemplate;
-    }
-
-    @Bean
-    MessageConverter messageConverter() {
-        return new Jackson2JsonMessageConverter();
-    }
-
-    @Bean
-    Queue queue2() {
-        return new Queue(queueName2, false);
-    }
-
-    @Bean
-    TopicExchange exchange2() {
-        return new TopicExchange(topicExchangeName2);
-    }
-
-    @Bean
-    Binding binding2(Queue queue2, TopicExchange exchange2) {
-        return BindingBuilder.bind(queue2).to(exchange2).with("foo.bar.2.#");
+    Binding binding2(Queue queueForCustomMessage, TopicExchange topicExchangeForCustomMessage) {
+        return BindingBuilder.bind(queueForCustomMessage).to(topicExchangeForCustomMessage).with(Constants.ROUTING_KEY_FOR_CUSTOM_MESSAGE);
     }
 
     @Bean
     RabbitTemplate rabbitTemplate2(ConnectionFactory connectionFactory,
-                                  MessageConverter messageConverter2) {
+                                  MessageConverter messageConverterForCustomMessage) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(messageConverter2);
+        rabbitTemplate.setMessageConverter(messageConverterForCustomMessage);
         return rabbitTemplate;
     }
 
     @Bean
-    MessageConverter messageConverter2() {
+    MessageConverter messageConverterForCustomMessage() {
         return new Jackson2JsonMessageConverter();
     }
 }

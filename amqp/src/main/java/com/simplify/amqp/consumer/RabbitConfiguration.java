@@ -1,5 +1,6 @@
 package com.simplify.amqp.consumer;
 
+import com.simplify.amqp.Constants;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -14,27 +15,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfiguration {
 
-    private static final String queueName = "spring-boot";
-
-    private static final String topicExchangeName = "spring-boot-exchange";
-
-    private static final String queueName2 = "spring-boot2";
-
-    private static final String topicExchangeName2 = "spring-boot2-exchange";
-
     @Bean
     Queue queue() {
-        return new Queue(queueName, false);
+        return new Queue(Constants.QUEUE_NAME, false);
     }
 
     @Bean
     TopicExchange exchange() {
-        return new TopicExchange(topicExchangeName);
+        return new TopicExchange(Constants.TOPIC_EXCHANGE_NAME);
     }
 
     @Bean
     Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
+        return BindingBuilder.bind(queue).to(exchange).with(Constants.ROUTING_KEY);
     }
 
     @Bean
@@ -50,31 +43,4 @@ public class RabbitConfiguration {
         return new Jackson2JsonMessageConverter();
     }
 
-    @Bean
-    Queue queue2() {
-        return new Queue(queueName2, false);
-    }
-
-    @Bean
-    TopicExchange exchange2() {
-        return new TopicExchange(topicExchangeName2);
-    }
-
-    @Bean
-    Binding binding2(Queue queue2, TopicExchange exchange2) {
-        return BindingBuilder.bind(queue2).to(exchange2).with("foo.bar.2.#");
-    }
-
-    @Bean
-    RabbitTemplate rabbitTemplate2(ConnectionFactory connectionFactory,
-                                  MessageConverter messageConverter2) {
-        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(messageConverter2);
-        return rabbitTemplate;
-    }
-
-    @Bean
-    MessageConverter messageConverter2() {
-        return new Jackson2JsonMessageConverter();
-    }
 }

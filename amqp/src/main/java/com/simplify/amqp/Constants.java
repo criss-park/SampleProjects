@@ -1,4 +1,4 @@
-package com.simplify.amqp.consumer;
+package com.simplify.amqp;
 
 public class Constants {
 
