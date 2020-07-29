@@ -1,0 +1,54 @@
+[2020-07-29 15:10:47:1564][main] INFO  c.s.logback.LogbackApplication - Starting LogbackApplication on Jonghun-mbpw with PID 98601 (/Users/jonghunpark/dev/git/logback/target/classes started by jonghunpark in /Users/jonghunpark/dev/git/logback)
+[2020-07-29 15:10:47:1565][main] INFO  c.s.logback.LogbackApplication - The following profiles are active: dev,logging-dev
+[2020-07-29 15:10:48:2474][main] INFO  c.s.logback.LogbackApplication - Started LogbackApplication in 2.262 seconds (JVM running for 2.588)
+[2020-07-29 15:10:52:6831][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - info log
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] PATH : /Users/jonghunpark/.jenv/shims:/Users/jonghunpark/.jenv/bin:/Users/jonghunpark/dev/__google-cloud-sdk/bin:/Users/jonghunpark/.gem/ruby/2.6.0/bin:/Users/jonghunpark/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] SHELL : /bin/zsh
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] PAGER : less
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] LSCOLORS : Gxfxcxdxbxegedabagacad
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] OLDPWD : /
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] RBENV_SHELL : zsh
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] USER : jonghunpark
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] ZSH : /Users/jonghunpark/.oh-my-zsh
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] TMPDIR : /var/folders/4m/0jlypczn7dz8c3vb9_pvs_tc0000gn/T/
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] SSH_AUTH_SOCK : /private/tmp/com.apple.launchd.FM2JQIyBHc/Listeners
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] XPC_FLAGS : 0x0
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] VERSIONER_PYTHON_VERSION : 2.7
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] __CF_USER_TEXT_ENCODING : 0x1F5:0x3:0x33
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] LOGNAME : jonghunpark
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] LESS : -R
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] LC_CTYPE : ko_KR.UTF-8
+[2020-07-29 15:10:52:6832][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] JENV_SHELL : zsh
+[2020-07-29 15:10:52:6833][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] JAVA_MAIN_CLASS_98601 : com.simplify.logback.LogbackApplication
+[2020-07-29 15:10:52:6833][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] PWD : /Users/jonghunpark/dev/git/logback
+[2020-07-29 15:10:52:6833][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] XPC_SERVICE_NAME : com.jetbrains.intellij.ce.25284
+[2020-07-29 15:10:52:6833][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] HOME : /Users/jonghunpark
+[2020-07-29 15:10:52:6833][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - [ENV] JENV_LOADED : 1
+[2020-07-29 15:10:52:6835][http-nio-8081-exec-1] INFO  c.s.l.controller.LogbackController - Jonghun-mbpw
+[2020-07-29 15:16:14:328722][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - info log
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] PATH : /Users/jonghunpark/.jenv/shims:/Users/jonghunpark/.jenv/bin:/Users/jonghunpark/dev/__google-cloud-sdk/bin:/Users/jonghunpark/.gem/ruby/2.6.0/bin:/Users/jonghunpark/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] SHELL : /bin/zsh
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] PAGER : less
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] LSCOLORS : Gxfxcxdxbxegedabagacad
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] OLDPWD : /
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] RBENV_SHELL : zsh
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] USER : jonghunpark
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] ZSH : /Users/jonghunpark/.oh-my-zsh
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] TMPDIR : /var/folders/4m/0jlypczn7dz8c3vb9_pvs_tc0000gn/T/
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] SSH_AUTH_SOCK : /private/tmp/com.apple.launchd.FM2JQIyBHc/Listeners
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] XPC_FLAGS : 0x0
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] VERSIONER_PYTHON_VERSION : 2.7
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] __CF_USER_TEXT_ENCODING : 0x1F5:0x3:0x33
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] LOGNAME : jonghunpark
+[2020-07-29 15:16:14:328723][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] LESS : -R
+[2020-07-29 15:16:14:328724][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] LC_CTYPE : ko_KR.UTF-8
+[2020-07-29 15:16:14:328724][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] JENV_SHELL : zsh
+[2020-07-29 15:16:14:328724][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] JAVA_MAIN_CLASS_98601 : com.simplify.logback.LogbackApplication
+[2020-07-29 15:16:14:328724][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] PWD : /Users/jonghunpark/dev/git/logback
+[2020-07-29 15:16:14:328724][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] XPC_SERVICE_NAME : com.jetbrains.intellij.ce.25284
+[2020-07-29 15:16:14:328724][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] HOME : /Users/jonghunpark
+[2020-07-29 15:16:14:328724][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - [ENV] JENV_LOADED : 1
+[2020-07-29 15:16:14:328726][http-nio-8081-exec-3] INFO  c.s.l.controller.LogbackController - Jonghun-mbpw
+[2020-07-29 15:25:10:565][main] INFO  c.s.logback.LogbackApplication - Starting LogbackApplication on Jonghun-mbpw with PID 3245 (/Users/jonghunpark/dev/git/SampleProjects/logback/target/classes started by jonghunpark in /Users/jonghunpark/dev/git/SampleProjects/logback)
+[2020-07-29 15:25:10:566][main] INFO  c.s.logback.LogbackApplication - The following profiles are active: dev,logging-dev
+[2020-07-29 15:25:11:1555][main] INFO  c.s.logback.LogbackApplication - Started LogbackApplication in 1.35 seconds (JVM running for 1.67)
