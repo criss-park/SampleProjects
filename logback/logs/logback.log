@@ -1,0 +1,6 @@
+[2020-07-29 18:22:09:1559][main] INFO  c.s.logback.LogbackApplication - Starting LogbackApplication on Jonghun-mbpw with PID 53592 (/Users/jonghunpark/dev/git/SampleProjects/logback/target/classes started by jonghunpark in /Users/jonghunpark/dev/git/SampleProjects/logback)
+[2020-07-29 18:22:09:1560][main] INFO  c.s.logback.LogbackApplication - No active profile set, falling back to default profiles: default
+[2020-07-29 18:22:10:2481][main] INFO  c.s.logback.LogbackApplication - Started LogbackApplication in 2.264 seconds (JVM running for 2.607)
+[2020-07-29 18:43:10:560][main] INFO  c.s.logback.LogbackApplication - Starting LogbackApplication on Jonghun-mbpw with PID 60171 (/Users/jonghunpark/dev/git/SampleProjects/logback/target/classes started by jonghunpark in /Users/jonghunpark/dev/git/SampleProjects/logback)
+[2020-07-29 18:43:10:561][main] INFO  c.s.logback.LogbackApplication - The following profiles are active: dev,logging-dev
+[2020-07-29 18:43:11:1539][main] INFO  c.s.logback.LogbackApplication - Started LogbackApplication in 1.33 seconds (JVM running for 1.66)
