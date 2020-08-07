@@ -11,7 +11,7 @@ import java.util.Map;
 @Controller
 public class ResponseController {
 
-    @RequestMapping(value="/testForForm")
+    @RequestMapping(value="/testForForm", method = RequestMethod.POST)
     public @ResponseBody Map<String, String> test(@RequestParam Map<String, String> reqParam){
 
         for(Map.Entry<String, String> entry : reqParam.entrySet()){
@@ -25,9 +25,6 @@ public class ResponseController {
     public @ResponseBody Map<String, Object> testForJson(@RequestBody Map<String, Object> reqParam){
 
         for(Map.Entry<String, Object> entry : reqParam.entrySet()){
-
-            System.out.println(entry.getKey() + " : " + entry.getValue());
-
             entry.setValue(entry.getValue() + "_R");
         }
 
