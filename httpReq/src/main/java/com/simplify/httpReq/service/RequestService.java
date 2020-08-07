@@ -2,6 +2,7 @@ package com.simplify.httpReq.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -25,7 +26,7 @@ public class RequestService {
 
         HttpClient client = HttpClientBuilder.create().build();
 
-        HttpPost post = new HttpPost("http://localhost:8080/testForForm");
+        HttpPost post = new HttpPost("http://localhost:8080/test");
 
         try {
 
@@ -40,6 +41,10 @@ public class RequestService {
             post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
             HttpResponse response = client.execute(post);
+
+            for(Header header : response.getAllHeaders()){
+                System.out.println(header.getName() + " : " + header.getValue());
+            }
 
             if (response.getStatusLine().getStatusCode() == 200) {
                 ResponseHandler<String> handler = new BasicResponseHandler();
@@ -66,7 +71,7 @@ public class RequestService {
     public JsonNode requestHttpJson(){
 
         HttpClient client = HttpClientBuilder.create().build(); // HttpClient 생성
-        HttpPost postRequest = new HttpPost("http://localhost:8080/testForJson"); //POST 메소드 URL 새성
+        HttpPost postRequest = new HttpPost("http://localhost:8080/test"); //POST 메소드 URL 새성
         try {
             postRequest.setHeader("Accept", "application/json");
             postRequest.setHeader("Connection", "keep-alive");

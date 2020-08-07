@@ -11,8 +11,18 @@ import java.util.Map;
 @Controller
 public class ResponseController {
 
-    @RequestMapping(value="/testForForm", method = RequestMethod.POST)
-    public @ResponseBody Map<String, String> test(@RequestParam Map<String, String> reqParam){
+    @RequestMapping(value="/test", method = RequestMethod.POST)
+    public @ResponseBody Map<String, String> test(@RequestBody Map<String, String> reqParam){
+
+        for(Map.Entry<String, String> entry : reqParam.entrySet()){
+            entry.setValue(entry.getValue() + "_R_");
+        }
+
+        return reqParam;
+    }
+
+    @RequestMapping(value="/testForForm", method = RequestMethod.POST, produces = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+    public @ResponseBody Map<String, String> testForForm(@RequestParam Map<String, String> reqParam){
 
         for(Map.Entry<String, String> entry : reqParam.entrySet()){
             entry.setValue(entry.getValue() + "_R");
