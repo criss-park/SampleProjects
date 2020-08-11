@@ -19,13 +19,13 @@ public class RequestController {
     public @ResponseBody String reqForm(){
         JsonNode node = requestService.requestHttpForm();
 
-        if(node != null){
-            Iterator<String> itr = node.fieldNames();
-            while(itr.hasNext()){
-                String key = itr.next();
-                System.out.println(key + " : " + node.get(key));
-            }
-        }
+//        if(node != null){
+//            Iterator<String> itr = node.fieldNames();
+//            while(itr.hasNext()){
+//                String key = itr.next();
+//                System.out.println(key + " : " + node.get(key));
+//            }
+//        }
 
         return "/req/form";
     }
@@ -34,13 +34,13 @@ public class RequestController {
     public @ResponseBody String reqJson(){
         JsonNode node = requestService.requestHttpJson();
 
-        if(node != null){
-            Iterator<String> itr = node.fieldNames();
-            while(itr.hasNext()){
-                String key = itr.next();
-                System.out.println(key + " : " + node.get(key));
-            }
-        }
+//        if(node != null){
+//            Iterator<String> itr = node.fieldNames();
+//            while(itr.hasNext()){
+//                String key = itr.next();
+//                System.out.println(key + " : " + node.get(key));
+//            }
+//        }
 
         return "/req/json";
     }

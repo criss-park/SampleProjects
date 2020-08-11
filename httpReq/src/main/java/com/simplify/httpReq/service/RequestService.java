@@ -26,7 +26,8 @@ public class RequestService {
 
         HttpClient client = HttpClientBuilder.create().build();
 
-        HttpPost post = new HttpPost("http://localhost:8080/test");
+        //HttpPost httpPost = new HttpPost("http://localhost:8080/testForForm");
+        HttpPost httpPost = new HttpPost("http://localhost:8080/testForForm");
 
         try {
 
@@ -38,18 +39,14 @@ public class RequestService {
             nameValuePairs.add(new BasicNameValuePair("source", "Google-cURL-Example"));
             nameValuePairs.add(new BasicNameValuePair("service", "ac2dm"));
 
-            post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-            HttpResponse response = client.execute(post);
-
-            for(Header header : response.getAllHeaders()){
-                System.out.println(header.getName() + " : " + header.getValue());
-            }
+            HttpResponse response = client.execute(httpPost);
 
             if (response.getStatusLine().getStatusCode() == 200) {
                 ResponseHandler<String> handler = new BasicResponseHandler();
                 String body = handler.handleResponse(response);
-                System.out.println(body);
+                System.out.println("[RESPONSE] requestHttpForm() " + body);
 
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode node = objectMapper.readTree(body);
@@ -71,21 +68,21 @@ public class RequestService {
     public JsonNode requestHttpJson(){
 
         HttpClient client = HttpClientBuilder.create().build(); // HttpClient 생성
-        HttpPost postRequest = new HttpPost("http://localhost:8080/test"); //POST 메소드 URL 새성
+        HttpPost httpPost = new HttpPost("http://localhost:8080/testForJson"); //POST 메소드 URL 새성
         try {
-            postRequest.setHeader("Accept", "application/json");
-            postRequest.setHeader("Connection", "keep-alive");
-            postRequest.setHeader("Content-Type", "application/json");
+            httpPost.setHeader("Accept", "application/json");
+            httpPost.setHeader("Connection", "keep-alive");
+            httpPost.setHeader("Content-Type", "application/json");
 
-            postRequest.setEntity(new StringEntity("{\"Email\":\"youremail_R\",\"Passwd\":\"yourpassword_R\",\"accountType\":\"GOOGLE_R\",\"source\":\"Google-cURL-Example_R\",\"service\":\"ac2dm_R\"}")); //json 메시지 입력
+            httpPost.setEntity(new StringEntity("{\"Email\":\"youremail\",\"Passwd\":\"yourpassword\",\"accountType\":\"GOOGLE\",\"source\":\"Google-cURL-Example\",\"service\":\"ac2dm\"}")); //json 메시지 입력
 
-            HttpResponse response = client.execute(postRequest);
+            HttpResponse response = client.execute(httpPost);
 
             //Response 출력
             if (response.getStatusLine().getStatusCode() == 200) {
                 ResponseHandler<String> handler = new BasicResponseHandler();
                 String body = handler.handleResponse(response);
-                System.out.println("!" + body);
+                System.out.println("[RESPONSE] requestHttpJson() " + body);
 
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode node = objectMapper.readTree(body);

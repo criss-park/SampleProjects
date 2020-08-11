@@ -11,21 +11,11 @@ import java.util.Map;
 @Controller
 public class ResponseController {
 
-    @RequestMapping(value="/test", method = RequestMethod.POST)
-    public @ResponseBody Map<String, String> test(@RequestBody Map<String, String> reqParam){
-
-        for(Map.Entry<String, String> entry : reqParam.entrySet()){
-            entry.setValue(entry.getValue() + "_R_");
-        }
-
-        return reqParam;
-    }
-
-    @RequestMapping(value="/testForForm", method = RequestMethod.POST, produces = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+    @RequestMapping(value="/testForForm", method = RequestMethod.POST)
     public @ResponseBody Map<String, String> testForForm(@RequestParam Map<String, String> reqParam){
 
         for(Map.Entry<String, String> entry : reqParam.entrySet()){
-            entry.setValue(entry.getValue() + "_R");
+            entry.setValue(entry.getValue() + "_testForForm");
         }
 
         return reqParam;
@@ -35,7 +25,7 @@ public class ResponseController {
     public @ResponseBody Map<String, Object> testForJson(@RequestBody Map<String, Object> reqParam){
 
         for(Map.Entry<String, Object> entry : reqParam.entrySet()){
-            entry.setValue(entry.getValue() + "_R");
+            entry.setValue(entry.getValue() + "_testForJson");
         }
 
         return reqParam;
