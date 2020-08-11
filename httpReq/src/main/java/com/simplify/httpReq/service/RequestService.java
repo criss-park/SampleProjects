@@ -2,7 +2,6 @@ package com.simplify.httpReq.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -26,7 +25,6 @@ public class RequestService {
 
         HttpClient client = HttpClientBuilder.create().build();
 
-        //HttpPost httpPost = new HttpPost("http://localhost:8080/testForForm");
         HttpPost httpPost = new HttpPost("http://localhost:8080/testForForm");
 
         try {
