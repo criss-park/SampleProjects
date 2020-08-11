@@ -16,12 +16,12 @@ public class RequestController {
     @RequestMapping(value="/req/form")
     public @ResponseBody String reqForm(){
         JsonNode node = requestService.requestHttpForm();
-        return "/req/form";
+        return node.toPrettyString();
     }
 
     @RequestMapping(value="/req/json")
     public @ResponseBody String reqJson(){
         JsonNode node = requestService.requestHttpJson();
-        return "/req/json";
+        return node.toPrettyString();
     }
 }
