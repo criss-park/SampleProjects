@@ -12,7 +12,11 @@ public class LogbackApplication {
 
 	public static void main(String[] args) {
 
+<<<<<<< HEAD
 		logger.info("logging with root INFO?");
+=======
+		logger.info("Hello logback");
+>>>>>>> 68dee9900f820380016657f9a1b827636e1f179d
 
 		SpringApplication.run(LogbackApplication.class, args);
 	}
