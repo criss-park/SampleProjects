@@ -31,33 +31,71 @@ public class RegLookAround {
         for(String str : SAMPLE_STR){
             matcher = pattern.matcher(str);
             if(matcher.find()){
-                System.out.println(matcher.group());
+                System.out.println(str + " > " + matcher.group());
             }
         }
 
         System.out.println();
-
         System.out.println("# 전방탐색 - 찾는 단어 포함하지 않음 - .+(?=:)");
 
         pattern = Pattern.compile(".+(?=:)");
         for(String str : SAMPLE_STR){
             matcher = pattern.matcher(str);
             if(matcher.find()){
-                System.out.println(matcher.group());
+                System.out.println(str + " > " + matcher.group());
             }
         }
 
         System.out.println();
-
         System.out.println("# 후방탐색 - (?<=\\$)[0-9.]+");
 
         pattern = Pattern.compile("(?<=\\$)[0-9.]+");
         for(String str : SAMPLE_STR2){
             matcher = pattern.matcher(str);
             if(matcher.find()){
-                System.out.println(matcher.group());
+                System.out.println(str + " > " + matcher.group());
             }
         }
+
+        System.out.println();
+        System.out.println("# 응용하기");
+
+        String xmlSample = "<HEAD>\n" +
+                "<TITLE>Simplify linkeverything</TITLE>\n" +
+                "</HEAD>";
+        pattern = Pattern.compile("(?<=\\<[tT][iI][tT][lL][eE]\\>).*(?=\\<\\/[tT][iI][tT][lL][eE]\\>)");
+        matcher = pattern.matcher(xmlSample);
+        if(matcher.find()){
+            System.out.println(xmlSample);
+            System.out.println(" > " + matcher.group());
+        }
+
+        System.out.println();
+        System.out.println("# 금액만 추출");
+
+        String negativeSample = "I paid $30 for 100 apples,\n" +
+                "50 oranges, and 60 pears.\n" +
+                "I saved $5 on this order.";
+        pattern = Pattern.compile("(?<=\\$)\\d+");
+        matcher = pattern.matcher(negativeSample);
+        System.out.println(negativeSample);
+        while(matcher.find()){
+            System.out.println(" > " + matcher.group());
+        }
+
+        System.out.println();
+        System.out.println("# 수량만 추출");
+
+        pattern = Pattern.compile("\\b(?<!\\$)\\d+\\b");
+        matcher = pattern.matcher(negativeSample);
+        System.out.println(negativeSample);
+        while(matcher.find()){
+            System.out.println(" > " + matcher.group());
+        }
+
+
+
+
     }
 
     private static void sample() {
