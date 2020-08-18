@@ -2,6 +2,7 @@ package com.example.log.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +11,9 @@ import javax.annotation.PostConstruct;
 public class BatchService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Value("${batch.sleep.interval}")
+    private int userBucketPath;
 
     @PostConstruct
     public void init(){
@@ -23,7 +27,7 @@ public class BatchService {
             logger.info("{ \"NEXCORE\":" + iValue + " }");
 
             try {
-                Thread.sleep(3000);
+                Thread.sleep(userBucketPath);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
