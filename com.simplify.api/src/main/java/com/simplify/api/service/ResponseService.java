@@ -59,7 +59,7 @@ public class ResponseService {
     private void setSuccessResult(CommonResult commonResult){
         commonResult.setSuccess(true);
         commonResult.setCode(CommonResponse.SUCCESS.getCode());
-        commonResult.setMsg(CommonResponse.FAIL.getMsg());
+        commonResult.setMsg(CommonResponse.SUCCESS.getMsg());
     }
 
 

@@ -28,7 +28,7 @@ public class ExceptionAdvice {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     protected CommonResult defaultException(HttpServletRequest httpServletRequest, Exception exception){
-        return responseService.getFailResult(Integer.valueOf(getMessage("unknown.code")), getMessage("unknown.msg"));
+        return responseService.getFailResult(Integer.valueOf(getMessage("unKnown.code")), getMessage("unKnown.msg"));
     }
 
     @ExceptionHandler(CUserNotFoundException.class)
