@@ -1,5 +1,6 @@
 package com.simplify.api.advice;
 
+import com.simplify.api.advice.exception.CEmailSigninFailedException;
 import com.simplify.api.advice.exception.CUserNotFoundException;
 import com.simplify.api.model.response.CommonResult;
 import com.simplify.api.service.ResponseService;
@@ -30,14 +31,16 @@ public class ExceptionAdvice {
         return responseService.getFailResult(Integer.valueOf(getMessage("unknown.code")), getMessage("unknown.msg"));
     }
 
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(CUserNotFoundException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     protected CommonResult userNotFoundException(HttpServletRequest httpServletRequest, Exception exception){
-
-        //log.debug(getMessage("userNotFound.code"));
-        log.debug(messageSource.getMessage("userNotFound.code", null, Locale.ENGLISH));
-
         return responseService.getFailResult(Integer.valueOf(getMessage("userNotFound.code")), getMessage("userNotFound.msg"));
+    }
+
+    @ExceptionHandler(CEmailSigninFailedException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    protected CommonResult emailSigninFailed(HttpServletRequest httpServletRequest, Exception exception){
+        return responseService.getFailResult(Integer.valueOf(getMessage("emailSigninFailed.code")), getMessage("emailSigninFailed.msg"));
     }
 
     private String getMessage(String code){

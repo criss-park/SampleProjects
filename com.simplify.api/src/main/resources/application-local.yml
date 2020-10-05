@@ -10,6 +10,8 @@ server:
     username: sa
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-    properties.hibernate:
-      hbm2ddl.auto: update
+    properties.hibernate.hbm2ddl.auto: update
+    properties.hibernate.format_sql: true
     showSql: true
+    generate-ddl: true
+
