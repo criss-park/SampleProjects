@@ -28,9 +28,11 @@ public class UserController {
         return responseService.getListResult(userJpaRepository.findAll());
     }
 
+    @ApiOperation(value = "회원 단건 조회", notes = "userId로 회원을 조회한다.")
     @GetMapping(value = "/user/{msrl}")
     public SingleResult<User> findUserById(
-            @ApiParam(value = "회원 ID", required = true) @PathVariable Long msrl) throws Exception {
+            @ApiParam(value = "회원 ID", required = true) @PathVariable Long msrl,
+            @ApiParam(value = "언어", defaultValue = "ko") @RequestParam String lang) throws Exception {
         //return responseService.getSingleResult(userJpaRepository.findById(msrl).orElse(null));
         return responseService.getSingleResult(userJpaRepository.findById(msrl).orElseThrow(CUserNotFoundException::new));
     }
