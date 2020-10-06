@@ -9,10 +9,14 @@ import com.simplify.api.repo.UserJpaRepository;
 import com.simplify.api.service.ResponseService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+@PreAuthorize("hasRole('ROLE_USER')")
+//@Secured("ROLE_USER")
 @Api(tags = {"1. User Controller"})
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +26,7 @@ public class UserController {
     private final UserJpaRepository userJpaRepository;
     private final ResponseService responseService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access token", required = true, dataType = "String", paramType = "header")
     })

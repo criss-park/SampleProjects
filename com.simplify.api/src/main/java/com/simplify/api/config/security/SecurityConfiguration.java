@@ -5,12 +5,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 @RequiredArgsConstructor
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -40,11 +42,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
+                // @PreAuthorize 혹은 @Secured 로 설정하는 방식이라면 이 부분을 제거합니다.
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers("/*/signin", "/*/signup").permitAll()
+//                .antMatchers(HttpMethod.GET, "/helloworld/**", "/exception/**").permitAll()
+//                .antMatchers("/*/users").hasRole("ADMIN")
+//                .anyRequest().hasRole("USER")
                 .and()
-                .authorizeRequests()
-                .antMatchers("/*/signin", "/*/signup").permitAll()
-                .antMatchers(HttpMethod.GET, "helloworld/**").permitAll()
-                .anyRequest().hasRole("USER")
+                .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
+                .and()
+                .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
     }

@@ -1,5 +1,6 @@
 package com.simplify.api.advice;
 
+import com.simplify.api.advice.exception.CAuthenticationEntryPointException;
 import com.simplify.api.advice.exception.CEmailSigninFailedException;
 import com.simplify.api.advice.exception.CUserNotFoundException;
 import com.simplify.api.model.response.CommonResult;
@@ -9,12 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Locale;
 
 @Slf4j
 @RestControllerAdvice
@@ -27,23 +28,33 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    protected CommonResult defaultException(HttpServletRequest httpServletRequest, Exception exception){
+    protected CommonResult defaultException(HttpServletRequest httpServletRequest, Exception exception) {
         return responseService.getFailResult(Integer.valueOf(getMessage("unKnown.code")), getMessage("unKnown.msg"));
     }
 
     @ExceptionHandler(CUserNotFoundException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    protected CommonResult userNotFoundException(HttpServletRequest httpServletRequest, Exception exception){
+    protected CommonResult userNotFoundException(HttpServletRequest httpServletRequest, Exception exception) {
         return responseService.getFailResult(Integer.valueOf(getMessage("userNotFound.code")), getMessage("userNotFound.msg"));
     }
 
     @ExceptionHandler(CEmailSigninFailedException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    protected CommonResult emailSigninFailed(HttpServletRequest httpServletRequest, Exception exception){
+    protected CommonResult emailSigninFailed(HttpServletRequest httpServletRequest, Exception exception) {
         return responseService.getFailResult(Integer.valueOf(getMessage("emailSigninFailed.code")), getMessage("emailSigninFailed.msg"));
     }
 
-    private String getMessage(String code){
+    @ExceptionHandler(CAuthenticationEntryPointException.class)
+    protected CommonResult authenticationEntryPointException(HttpServletRequest httpServletRequest, Exception exception) {
+        return responseService.getFailResult(Integer.parseInt(getMessage("entryPointException.code")), getMessage("entryPointException.msg"));
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    protected CommonResult accessDeniedException(HttpServletRequest request, Exception exception){
+        return responseService.getFailResult(Integer.parseInt(getMessage("accessDenied.code")), getMessage("accessDenied.msg"));
+    }
+
+    private String getMessage(String code) {
         return getMessage(code, null);
     }
 

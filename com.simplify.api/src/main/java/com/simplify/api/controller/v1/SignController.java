@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 @Slf4j
@@ -36,22 +37,10 @@ public class SignController {
     @PostMapping(value = "/signin")
     public SingleResult<String> signin(@ApiParam(value = "회원 ID : 이메일", required = true) @RequestParam String id,
                                        @ApiParam(value = "비밀번호", required = true) @RequestParam String password){
-        log.debug(id);
-
         User user = userJpaRepository.findByUid(id).orElseThrow(CEmailSigninFailedException::new);
-
-        log.debug(user.getName());
-
-        log.debug(String.valueOf(passwordEncoder.matches(password, user.getPassword())));
-
         if(!passwordEncoder.matches(password, user.getPassword())){
             throw new CEmailSigninFailedException();
         }
-
-        log.debug(String.valueOf(user.getMsrl()));
-        log.debug(String.valueOf(user.getRoles()));
-        log.debug(jwtTokenProvider.createToken(String.valueOf(user.getMsrl()), user.getRoles()));
-
         return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(user.getMsrl()), user.getRoles()));
     }
 
@@ -64,7 +53,8 @@ public class SignController {
                 .uid(id)
                 .name(name)
                 .password(passwordEncoder.encode(password))
-                .roles(Collections.singletonList("ROLE_USER"))
+                //.roles(Collections.singletonList("ROLE_USER"))
+                .roles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"))
                 .build());
         return responseService.getSuccessResult();
     }
