@@ -1,8 +1,8 @@
 logging:
-  config: /Users/jonghunpark/logback.xml
+#  config: /Users/jonghunpark/logback.xml
   level:
-    root: info
-    com.simplify: debug
+    root: info #info
+    com.simplify: debug #debug
 
 server:
   datasource:
@@ -16,3 +16,8 @@ server:
     showSql: true
     generate-ddl: true
 
+spring:
+  url:
+    base: http://localhost:8080
+  freemarker:
+    template-loader-path: "classpath:/templates"

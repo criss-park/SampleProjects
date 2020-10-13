@@ -1,8 +1,16 @@
 spring:
   profiles:
-    active: local
+    active: local # default profile
   messages:
     basename: i18n/exception
     encoding: UTF-8
+  social:
+    kakao:
+      client_id: xxxxxxxxxxxxxxxxxxxxx
+      redirect: /social/login/kakao
+      url:
+        login: https://kauth.kakao.com/oauth/authorize
+        token: https://kauth.kakao.com/oauth/token
+        profile: https://kapi.kakao.com/v2/user/me
   jwt:
     secret: roqkf1!

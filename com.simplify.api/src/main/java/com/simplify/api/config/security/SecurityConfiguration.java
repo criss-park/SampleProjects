@@ -44,12 +44,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
                 // @PreAuthorize 혹은 @Secured 로 설정하는 방식이라면 이 부분을 제거합니다.
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/*/signin", "/*/signup").permitAll()
-//                .antMatchers(HttpMethod.GET, "/helloworld/**", "/exception/**").permitAll()
-//                .antMatchers("/*/users").hasRole("ADMIN")
-//                .anyRequest().hasRole("USER")
+                .and()
+                    .authorizeRequests()
+                        .antMatchers("/*/signin", "/*/signup", "/social/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/helloworld/**", "/exception/**", "/favicon.ico").permitAll()
+                        .antMatchers("/*/users").hasRole("ADMIN")
+                        .anyRequest().hasRole("USER")
                 .and()
                 .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
                 .and()
