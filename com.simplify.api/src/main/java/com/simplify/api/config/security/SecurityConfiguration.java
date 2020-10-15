@@ -11,6 +11,10 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.header.writers.frameoptions.WhiteListedAllowFromStrategy;
+import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
+
+import java.util.Arrays;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 @RequiredArgsConstructor
@@ -32,7 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "/swagger-resources/**",
                 "/swagger-ui.html",
                 "/webjars/**",
-                "/swagger/**");
+                "/swagger/**"
+                );
     }
 
     @Override
@@ -46,10 +51,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // @PreAuthorize 혹은 @Secured 로 설정하는 방식이라면 이 부분을 제거합니다.
                 .and()
                     .authorizeRequests()
-                        .antMatchers("/*/signin", "/*/signup", "/social/**").permitAll()
-                        .antMatchers(HttpMethod.GET, "/helloworld/**", "/exception/**", "/favicon.ico").permitAll()
+                        .antMatchers("/*/signin", "/*/signup", "/social/**", "/common/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/helloworld/**", "/exception/**", "/favicon.ico", "/h2-console/**", "/common/**").permitAll()
                         .antMatchers("/*/users").hasRole("ADMIN")
                         .anyRequest().hasRole("USER")
+//                .and()
+//                .csrf().ignoringAntMatchers("/h2-console/**")
+//                .and()
+//                .headers()
+//                .addHeaderWriter(
+//                        new XFrameOptionsHeaderWriter(
+//                                new WhiteListedAllowFromStrategy(Arrays.asList("localhost"))    // 여기!
+//                        )
+//                )
                 .and()
                 .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
                 .and()

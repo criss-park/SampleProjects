@@ -1,11 +1,11 @@
 logging:
 #  config: /Users/jonghunpark/logback.xml
   level:
-    root: info #info
+    root: debug #info
     com.simplify.api: debug #debug
 
 spring:
-  profiles: local
+  profiles: debug
   h2:
     console:
       enabled: true
@@ -21,4 +21,4 @@ spring:
     showSql: true
     generate-ddl: true
   url:
-    base: http://localhost:8080
+    base: http://localhost:9999
