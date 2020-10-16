@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         .antMatchers("/*/signin", "/*/signup", "/social/**", "/common/**").permitAll()
                         .antMatchers(HttpMethod.GET, "/helloworld/**", "/exception/**", "/favicon.ico", "/h2-console/**", "/common/**").permitAll()
                         .antMatchers("/*/users").hasRole("ADMIN")
-                        .anyRequest().hasRole("USER")
+                        //.anyRequest().hasRole("USER")
 //                .and()
 //                .csrf().ignoringAntMatchers("/h2-console/**")
 //                .and()

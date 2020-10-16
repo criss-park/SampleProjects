@@ -14,3 +14,9 @@ entryPointException:
 accessDenied:
   code: "-1003"
   msg: "A resource that can not be accessed with the privileges it has."
+notOwner:
+  code: "-1006"
+  msg: "You are not the owner of this resource."
+resourceNotExist:
+  code: "-1007"
+  msg: "This resource does not exist."

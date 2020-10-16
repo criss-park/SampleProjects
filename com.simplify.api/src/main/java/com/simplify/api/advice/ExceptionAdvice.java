@@ -1,8 +1,6 @@
 package com.simplify.api.advice;
 
-import com.simplify.api.advice.exception.CAuthenticationEntryPointException;
-import com.simplify.api.advice.exception.CEmailSigninFailedException;
-import com.simplify.api.advice.exception.CUserNotFoundException;
+import com.simplify.api.advice.exception.*;
 import com.simplify.api.model.response.CommonResult;
 import com.simplify.api.service.ResponseService;
 import lombok.RequiredArgsConstructor;
@@ -52,6 +50,18 @@ public class ExceptionAdvice {
     @ExceptionHandler(AccessDeniedException.class)
     protected CommonResult accessDeniedException(HttpServletRequest request, Exception exception){
         return responseService.getFailResult(Integer.parseInt(getMessage("accessDenied.code")), getMessage("accessDenied.msg"));
+    }
+
+    @ExceptionHandler(CNotOwnerException.class)
+    @ResponseStatus(HttpStatus.NON_AUTHORITATIVE_INFORMATION)
+    public CommonResult notOwnerException(HttpServletRequest httpServletRequest, Exception exception){
+        return responseService.getFailResult(Integer.parseInt(getMessage("notOwner.code")), getMessage("notOwner.msg"));
+    }
+
+    @ExceptionHandler(CResourceNotExistException.class)
+    @ResponseStatus(HttpStatus.NON_AUTHORITATIVE_INFORMATION)
+    public CommonResult resourceNotExistException(HttpServletRequest httpServletRequest, Exception exception){
+        return responseService.getFailResult(Integer.parseInt(getMessage("resourceNotExist.code")), getMessage("resourceNotExist.msg"));
     }
 
     private String getMessage(String code) {

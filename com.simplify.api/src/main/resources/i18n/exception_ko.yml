@@ -14,3 +14,9 @@ entryPointException:
 accessDenied:
   code: "-1003"
   msg: "보유한 권한으로 접근할수 없는 리소스 입니다."
+notOwner:
+  code: "-1006"
+  msg: "해당 자원의 소유자가 아닙니다."
+resourceNotExist:
+  code: "-1007"
+  msg: "요청한 자원이 존재 하지 않습니다."

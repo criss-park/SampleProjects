@@ -43,4 +43,7 @@ dependencies {
 
     /* for kakao login */
     implementation 'com.google.code.gson:gson'
+
+    /* for validation (from spring-boot 2.3, manually add this lib) */
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
