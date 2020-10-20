@@ -46,4 +46,7 @@ dependencies {
 
     /* for validation (from spring-boot 2.3, manually add this lib) */
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    /* for aspect class StringUtils */
+    compile 'org.apache.commons:commons-lang3'
 }

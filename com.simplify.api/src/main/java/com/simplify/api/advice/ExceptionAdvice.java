@@ -64,6 +64,12 @@ public class ExceptionAdvice {
         return responseService.getFailResult(Integer.parseInt(getMessage("resourceNotExist.code")), getMessage("resourceNotExist.msg"));
     }
 
+    @ExceptionHandler(CForbiddenWordException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public CommonResult forbiddenWordException(HttpServletRequest httpServletRequest, Exception exception){
+        return responseService.getFailResult(Integer.parseInt(getMessage("forbiddenWord.code")), getMessage("forbiddenWord.msg", new Object[]{exception.getMessage()}));
+    }
+
     private String getMessage(String code) {
         return getMessage(code, null);
     }

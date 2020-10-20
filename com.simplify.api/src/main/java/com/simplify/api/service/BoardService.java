@@ -3,6 +3,7 @@ package com.simplify.api.service;
 import com.simplify.api.advice.exception.CNotOwnerException;
 import com.simplify.api.advice.exception.CResourceNotExistException;
 import com.simplify.api.advice.exception.CUserNotFoundException;
+import com.simplify.api.annotation.ForbiddenWordCheck;
 import com.simplify.api.entity.Board;
 import com.simplify.api.entity.Post;
 import com.simplify.api.entity.User;
@@ -38,8 +39,13 @@ public class BoardService {
         return postJpaRepository.findById(postId).orElseThrow(CResourceNotExistException::new);
     }
 
+    @ForbiddenWordCheck
     public Post writePost(String uid, String boardName, ParamsPost paramsPost){
         Board board = findBoard(boardName);
+
+        // 고전적인 방식으로 금칙어 체크하기
+//        checkForbiddenWord(paramsPost.getContent());
+
         Post post = new Post(paramsPost.getTitle()
                 , paramsPost.getAuthor()
                 , paramsPost.getContent()
@@ -48,8 +54,21 @@ public class BoardService {
         return postJpaRepository.save(post);
     }
 
+//    private void checkForbiddenWord(String content) {
+//        List<String> forbiddenWords = Arrays.asList("개새끼", "쌍년", "씨발");
+//        Optional<String> forbiddenWord = forbiddenWords.stream().filter(content::contains).findFirst();
+//        if(forbiddenWord.isPresent()){
+//            throw new CForbiddenWordException(forbiddenWord.get());
+//        }
+//    }
+
+    @ForbiddenWordCheck
     public Post updatePost(long postId, String uid, ParamsPost paramsPost) {
         Post post = getPost(postId);
+
+        // 고전적인 방식으로 금칙어 체크하기
+//        checkForbiddenWord(paramsPost.getContent());
+
         User user = post.getUser();
         if (!uid.equals(user.getUid())) {
             throw new CNotOwnerException();
