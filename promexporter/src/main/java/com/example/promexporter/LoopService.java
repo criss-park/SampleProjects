@@ -13,6 +13,7 @@ public class LoopService {
     @Scheduled( fixedRate = 3000 )
     public void checkRecords() {
         prometheusConfig.getSampleGauge().set(Math.random());
+        prometheusConfig.getSampleGauge().inc();
         System.out.println("sampleGauge=" + prometheusConfig.getSampleGauge().get());
     }
 }
