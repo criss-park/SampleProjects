@@ -1,0 +1,14 @@
+version: '2'
+
+networks:
+  websample_network:
+
+services:
+  prometheus:
+    container_name: websample-docker
+    image: jonghunparksk/web-sample-for-docker:v0.3
+    ports:
+      - 8080:8080
+      - 9111:9111
+    networks:
+      - websample_network

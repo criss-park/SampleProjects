@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: njf-app-deployment
+  labels:
+    app: njf-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: njf-app
+  template:
+    metadata:
+      labels:
+        app: njf-app
+    spec:
+      containers:
+      - name: njf-app-cont
+        image: jonghunparksk/web-sample-for-docker:v0.3
+        imagePullPolicy: Always
+        ports:
+        - name: web
+          containerPort: 8080
+        - name: prom
+          containerPort: 9111
