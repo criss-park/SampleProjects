@@ -20,7 +20,8 @@ public class PrometheusConfig {
 
     @PostConstruct
     public void init(){
-        //System.out.println("init()");
+
+        System.out.println("init()");
 
         // To use JVM Metrics,
         // Implementation 'io.prometheus:simpleclient_hotspot:0.6.0' add to gradle
