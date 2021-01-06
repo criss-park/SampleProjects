@@ -34,9 +34,9 @@ public class SampleController {
     private void setTxValue() {
         double randVal = Math.random();
 
-        prometheusConfig.getSampleGauge().set성(randVal);
+        prometheusConfig.getSampleGauge().set(randVal);
 
-        // 요청이 들어올 때, 임의로 에러 카운트 생
+        // 요청이 들어올 때, 임의로 에러 카운트 생성
         if((int)(randVal * 10) % 5 == 0 ){
             prometheusConfig.getErrGauge().inc();
         }else{
