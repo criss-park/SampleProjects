@@ -18,12 +18,12 @@ public class LoopService {
 
         prometheusConfig.getSampleGauge().set(randVal);
 
-        if((int)(randVal * 10) % 5 == 0 ){
-            prometheusConfig.getErrGauge().inc();
-        }else{
-            prometheusConfig.getOkGauge().inc();
-        }
-        prometheusConfig.getTotalGauge().inc();
+//        if((int)(randVal * 10) % 5 == 0 ){
+//            prometheusConfig.getErrGauge().inc();
+//        }else{
+//            prometheusConfig.getOkGauge().inc();
+//        }
+//        prometheusConfig.getTotalGauge().inc();
 
         //prometheusConfig.getSampleGauge().inc();
         //System.out.println("sampleGauge=" + prometheusConfig.getSampleGauge().get());
