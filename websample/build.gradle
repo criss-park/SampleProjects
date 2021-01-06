@@ -13,6 +13,9 @@ repositories {
 }
 
 dependencies {
+	implementation 'io.prometheus:simpleclient:0.6.0'
+	implementation 'io.prometheus:simpleclient_httpserver:0.6.0'
+	implementation 'io.prometheus:simpleclient_hotspot:0.6.0'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
